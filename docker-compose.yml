@@ -42,4 +42,3 @@ volumes:
   app-storage: {}
   gem_cache: {}
   node_modules: {}
-
