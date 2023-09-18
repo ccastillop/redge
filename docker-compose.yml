@@ -1,0 +1,45 @@
+services: 
+  postgres:
+    image: postgres:13-alpine
+    env_file: .env.dev
+    volumes:
+      - "postgres_data:/var/lib/postgresql/data"
+    ports:
+      - "15432:5432"
+
+  redis:
+    image: redis:6.0-alpine
+    ports:
+      - "16379:6379"
+  
+  memcached:
+    image: memcached:1.6-alpine
+    ports:
+      - "21211:11211"
+
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - "3000:3000"
+    depends_on:
+      postgres:
+        condition: "service_started"
+      redis:
+        condition: "service_started"
+      memcached:
+        condition: "service_started"
+    env_file: .env.dev
+    volumes:
+      - .:/rails
+      - app-storage:/rails/storage
+      - gem_cache:/usr/local/bundle/gems
+      - node_modules:/rails/node_modules
+
+volumes:
+  postgres_data: {}
+  app-storage: {}
+  gem_cache: {}
+  node_modules: {}
+
