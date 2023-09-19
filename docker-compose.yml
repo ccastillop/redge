@@ -11,6 +11,8 @@ services:
     image: redis:6.0-alpine
     ports:
       - "16379:6379"
+    volumes:
+      - "redis_data:/data"
   
   memcached:
     image: memcached:1.6-alpine
@@ -33,14 +35,17 @@ services:
       memcached:
         condition: "service_started"
     env_file: .env.dev
+    environment:
+      - BUNDLE_PATH=/bundle/vendor
     volumes:
       - .:/rails
       - app-storage:/rails/storage
-      - gem_cache:/usr/local/bundle/gems
+      - gem_cache:/bundle
       - node_modules:/rails/node_modules
 
 volumes:
   postgres_data: {}
+  redis_data: {}
   app-storage: {}
   gem_cache: {}
   node_modules: {}
