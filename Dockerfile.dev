@@ -8,10 +8,8 @@ FROM registry.docker.com/library/ruby:$RUBY_VERSION-slim as base
 WORKDIR /rails
 
 # Set dev environment
-ENV RAILS_ENV="development" 
-
-# Throw-away build stage to reduce size of final image
-FROM base as build
+ENV RAILS_ENV="development" \ 
+    BUNDLE_APP_CONFIG=.bundle
 
 # Install packages needed to build gems and node modules
 RUN apt-get update -qq && \
@@ -41,6 +39,7 @@ COPY . .
 # Run and own only the runtime files as a non-root user for security
 RUN useradd rails --create-home --shell /bin/bash && \
     chown -R rails:rails db log storage tmp
+
 USER rails:rails
 
 # Entrypoint prepares the database.
