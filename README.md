@@ -19,12 +19,23 @@ This is an example of how to use Docker and Docker compose for spinning up your 
 - `docker-compose up` to start de containers. Add `-d` to run in background
 - `bin/dc bundle`  to install gems if needed
 - `bin/dc rails db:create db:setup` to setup the database
-- And in separate tabls
+
+- Run all at once
+  - `bin/dev`
+
+- Or, you can run each process in separate tabls
   - `bin/dc rails server` to start de rails server
   - `bin/dc rails console` to start de rails console
   - `bin/dc yarn build --watch` to compile Javascript
   - `bin/dc yarn build:css --watch` to compile CSS
   - `bin/dc bundle exec sidekiq` to start sidekiq 
+
+
+## Pending task
+- [ ] Review initial permisisions for Bundle and Yarn
+- [ ] Set database from the begining 
+- [ ] Other?
+>>>>>>> c62853a23baa840fac2a541b427879bc536d54bc
 
 Thanks
 
