@@ -1,0 +1,5 @@
+web: bin/dc rails server
+js: bin/dc yarn build --watch
+css: bin/dc yarn build:css --watch
+bg: bin/dc bundle exec sidekiq
+
