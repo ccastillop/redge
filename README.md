@@ -4,7 +4,7 @@ This is an example of how to use Docker and Docker compose for spinning up your 
 
 ## Requirements
 - 8GB ram and 4 cores CPU is enough
-- (Install Docker Desktop)[https://docs.docker.com/desktop/]
+- [Install Docker Desktop](https://docs.docker.com/desktop/)
 - Nothing else
 
 ## How to use
@@ -21,17 +21,23 @@ This is an example of how to use Docker and Docker compose for spinning up your 
 - `bin/dc rails db:create db:setup` to setup the database
 
 - Run all at once
-  - you need any ruby installed `gem install foreman`
-  - (Ok, a paradox :) 
   - `bin/dev`
 
+  Usually, the script will install foreman gem using your local ruby. 
+  (Ok, a paradox :))
+
+
 - Or, you can run each process in separate tabls
-  - `bin/dc rails server` to start de rails server
-  - `bin/dc rails console` to start de rails console
+  - `bin/dc bin/rails server -b 0.0.0.0` to start de rails server at port 3000
+  - `bin/dc bin/rails console` to start de rails console
   - `bin/dc yarn build --watch` to compile Javascript
   - `bin/dc yarn build:css --watch` to compile CSS
-  - `bin/dc bundle exec sidekiq` to start sidekiq 
+  - `bin/dc sidekiq` to start sidekiq 
+  - `bin/dc bash` to open a console in your container
+  - `bin/dc bundle` to install any new gem added to Gemfile
+  - and so on ...
 
+Luckly you can go to http://localhost:3000/ 
 
 ## Pending task
 - [ ] Review initial permisisions for Bundle and Yarn
