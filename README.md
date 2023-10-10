@@ -21,6 +21,8 @@ This is an example of how to use Docker and Docker compose for spinning up your 
 - `bin/dc rails db:create db:setup` to setup the database
 
 - Run all at once
+  - you need any ruby installed `gem install foreman`
+  - (Ok, a paradox :) 
   - `bin/dev`
 
 - Or, you can run each process in separate tabls
@@ -35,7 +37,6 @@ This is an example of how to use Docker and Docker compose for spinning up your 
 - [ ] Review initial permisisions for Bundle and Yarn
 - [ ] Set database from the begining 
 - [ ] Other?
->>>>>>> c62853a23baa840fac2a541b427879bc536d54bc
 
 Thanks
 

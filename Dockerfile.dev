@@ -9,7 +9,8 @@ WORKDIR /rails
 
 # Set dev environment
 ENV RAILS_ENV="development" \ 
-    BUNDLE_APP_CONFIG=.bundle
+    BUNDLE_APP_CONFIG=.bundle \
+    BUNDLE_PATH=/rails/vendor/bundle
 
 # Install packages needed to build gems and node modules
 RUN apt-get update -qq && \
